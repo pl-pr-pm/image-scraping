@@ -5,8 +5,9 @@ import time
 import config # configをインポート
 
 
-# 坂道グループメンバーの定義
-nogizaka: list[dict[str, str]] = [{'akimoto_manatsu':'秋元真夏'},
+# 坂道グループメンバの定義
+nogizaka: list[dict[str, str]] = [
+            {'akimoto_manatsu':'秋元真夏'},
             {'ikuta_erika':'生田絵梨花'},
             {'ito_junna':'伊藤純奈'},
             {'ito_riria':'伊藤理々杏'},
@@ -52,8 +53,8 @@ nogizaka: list[dict[str, str]] = [{'akimoto_manatsu':'秋元真夏'},
             {'yumiki_nao':'弓木奈於'}
             ]
 
-
-hinatazaka: list[dict[str, str]] = [{'saito_kyoko':'齋藤京子'},
+hinatazaka: list[dict[str, str]] = [
+              {'saito_kyoko':'齋藤京子'},
               {'sasaki_kumi':'佐々木久美'},
               {'sasaki_mirei':'佐々木美玲'},
               {'nibu_akari':'丹生明里'},
@@ -77,7 +78,8 @@ hinatazaka: list[dict[str, str]] = [{'saito_kyoko':'齋藤京子'},
               {'yamaguchi_haruyo':'山口陽世'}
               ]
 
-sakurazaka : list[dict[str, str]] = [{'uemura_rina':'上村莉菜'},
+sakurazaka : list[dict[str, str]] = [
+              {'uemura_rina':'上村莉菜'},
               {'ozeki_rika':'尾関梨香'},
               {'koike_minami':'小池美波'},
               {'kobayashi_yui':'小林由依'},
@@ -120,9 +122,25 @@ def image_scraping(keyword: str, max_num: int, storage: str) -> None:
     time.sleep(3)
 
 
+# 乃木坂メンバ分をダウンロード
+for nogizaka_member in nogizaka:
+    dest: str = list(nogizaka_member.keys())[0]
+    key_word: str = list(nogizaka_member.values())[0]
+    storage: str = config.PIC_DIR + config.NOGIZAKA_DIR + dest
+    image_scraping(keyword=key_word, max_num=1, storage=storage)
+
+
+# 日向坂メンバ分をダウンロード
+for hinatazaka_member in hinatazaka:
+    dest: str = list(hinatazaka_member.keys())[0]
+    key_word: str = list(hinatazaka_member.values())[0]
+    storage: str = config.PIC_DIR + config.HINATAZAKA_DIR + dest
+    image_scraping(keyword=key_word, max_num=1, storage=storage)
+
+
+# 櫻坂メンバ分をダウンロード
 for sakurazaka_member in sakurazaka:
     dest: str = list(sakurazaka_member.keys())[0]
     key_word: str = list(sakurazaka_member.values())[0]
     storage: str = config.PIC_DIR + config.SAKURAZAKA_DIR + dest
     image_scraping(keyword=key_word, max_num=1, storage=storage)
-
