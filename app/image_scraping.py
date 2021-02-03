@@ -1,7 +1,6 @@
 
 from __future__ import annotations
 from icrawler.builtin import BingImageCrawler
-# from typing import Optional, List, Tuple, Dict, Set
 import time
 import config # configをインポート
 
